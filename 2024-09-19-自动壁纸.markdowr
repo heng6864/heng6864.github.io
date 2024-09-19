@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动刷新背景壁纸 - 我的博客</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 1s ease-in-out;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>欢迎来到我的博客</h1>
+        <p>这个页面的背景壁纸会每隔一段时间自动刷新，带给你不一样的视觉享受。</p>
+    </div>
+
+    <script>
+        // 壁纸URL数组，可以添加多个壁纸URL
+        const wallpapers = [
+            'https://source.unsplash.com/random/1600x900?nature,water',
+            'https://source.unsplash.com/random/1600x900?city',
+            'https://source.unsplash.com/random/1600x900?mountain',
+            'https://source.unsplash.com/random/1600x900?forest',
+            'https://source.unsplash.com/random/1600x900?space'
+        ];
+
+        // 计数器，用于循环展示壁纸
+        let index = 0;
+
+        // 更换背景壁纸函数
+        function changeBackground() {
+            document.body.style.backgroundImage = `url('${wallpapers[index]}')`;
+            index = (index + 1) % wallpapers.length; // 循环计数器
+        }
+
+        // 每隔10秒自动更换背景
+        setInterval(changeBackground, 10000);
+
+        // 初始加载第一个背景壁纸
+        changeBackground();
+    </script>
+</body>
+
+</html>
